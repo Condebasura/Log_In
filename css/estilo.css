@@ -26,6 +26,8 @@
 #modal{
     border-style: none;
     box-shadow: 2px 2px 9px #444444;
+
+
 }
 .cajaInput{
     display: flex;
@@ -50,6 +52,7 @@ label{
     border-radius: 2em ;
     background-color: red;
     box-shadow: 2px 2px 8px #444444;
+cursor: pointer;
 }
 
 .exit:active{
