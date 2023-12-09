@@ -1,8 +1,14 @@
 const boton = document.querySelector(".log-in");
 
 boton.addEventListener("click", (e)=>{
-    if(e.target){
+   e.preventDefault();
+        if(e.target.matches(".log-in")){
         let modal = document.getElementById("modal");
+        modal.innerHTML = "";
+        const cajainicio = document.createElement("div");
+        const spam = document.createElement("div");
+        const IniciarSesion = document.createElement("button");
+        const Registro = document.createElement("button");
         const cajaInputs = document.createElement("div");
         const LabelInputUser = document.createElement("label");
         const InputUser = document.createElement("input");
@@ -14,26 +20,42 @@ boton.addEventListener("click", (e)=>{
         cajaInputs.setAttribute("class", "cajaInput")
         LabelInputUser.setAttribute("for", "usuario");
         InputUser.setAttribute("id", "usuario");
+        IniciarSesion.setAttribute("class", "sesion");
+        IniciarSesion.setAttribute("type", "submit");
+        Registro.setAttribute("class", "registrarse");
+        Registro.setAttribute("type", "submit");
+       
+        cajainicio.setAttribute("class", "cajainicio");
+        IniciarSesion.textContent = "Iniciar sesion";
+        Registro.textContent = "Registrarse";
+        spam.textContent = "O";
+
         LabelInputPass.setAttribute("for", "Pass");
         InputPass.setAttribute("id", "Pass")
         InputUser.setAttribute("type", "email");
         InputPass.setAttribute("type", "password")
-        salir.setAttribute("class", "exit");
-        salir.textContent = "X";
+        salir.setAttribute("class", "fa-solid fa-circle-xmark");
+       
+        InputUser.setAttribute("placeholder", "Ingrese su email");
+        InputPass.setAttribute("placeholder", "Ingrese su contraseña");
+
         
         LabelInputUser.textContent = "Usuario o Email";
         LabelInputPass.textContent = "Contraseña";
         
         modal.showModal();
+        modal.appendChild(salir);
+        modal.appendChild(cajaInputs);
+        modal.appendChild(cajainicio);
         
-        
+
         cajaInputs.appendChild(LabelInputUser);
         cajaInputs.appendChild(InputUser);
         cajaInputs.appendChild(LabelInputPass);
         cajaInputs.appendChild(InputPass);
-        modal.appendChild(salir);
-        modal.appendChild(cajaInputs);
-      
+      cajainicio.appendChild(IniciarSesion);
+      cajainicio.appendChild(spam);
+      cajainicio.appendChild(Registro);
 
         salir.addEventListener("click", (e)=>{
             if(e.target){
