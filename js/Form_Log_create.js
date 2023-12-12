@@ -16,7 +16,7 @@ boton.addEventListener("click", (e)=>{
         const InputPass = document.createElement("Input");
         const salir = document.createElement("i");
 
-
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         cajaInputs.setAttribute("class", "cajaInput")
         LabelInputUser.setAttribute("for", "usuario");
         InputUser.setAttribute("id", "usuario");
@@ -39,10 +39,9 @@ boton.addEventListener("click", (e)=>{
         InputUser.setAttribute("placeholder", "Ingrese su email");
         InputPass.setAttribute("placeholder", "Ingrese su contraseña");
 
-        
         LabelInputUser.textContent = "Usuario o Email";
         LabelInputPass.textContent = "Contraseña";
-        
+                
         modal.showModal();
         modal.appendChild(salir);
         modal.appendChild(cajaInputs);
@@ -56,6 +55,22 @@ boton.addEventListener("click", (e)=>{
       cajainicio.appendChild(IniciarSesion);
       cajainicio.appendChild(spam);
       cajainicio.appendChild(Registro);
+       
+      const ValidarEmail = () => {
+
+
+      if(!regexEmail.test(InputUser.value)){
+         InputUser.style.border = "1.5px solid red";
+         InputUser.setCustomValidity("El campo no puede estar vacio contener numeros o caracteres especiales");
+         return false;
+      }else{
+         InputUser.style.border = " 1.5px solid  #4ee989 ";
+        InputUser.setCustomValidity("");
+        return true;
+      }
+      }
+
+   InputUser.addEventListener("input", ValidarEmail);
 
         salir.addEventListener("click", (e)=>{
             if(e.target){
